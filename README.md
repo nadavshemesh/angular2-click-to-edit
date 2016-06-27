@@ -26,11 +26,11 @@
 component.ts
 ```
  // Import the component to the component where you want to implement the click-to-edit.
- import { NdvEditComponent } from 'angular2-click-to-edit/ndv.edit.component';
+ import { NDV_DIRECTIVES } from 'angular2-click-to-edit/components';
 
  // Include it in the Component directives
  @Component({
- 	 directives: [NdvEditComponent]
+ 	 directives: [NDV_DIRECTIVES]
  })
 
 ```

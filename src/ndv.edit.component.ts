@@ -3,7 +3,7 @@
 
 @Component({
     selector: 'ndv-edit',
-    template: `<span class='ndv-comp' [ngClass]='{active-ndv:show}'>
+    template: `<span class='ndv-comp'>
                     <input *ngIf='show' type='text' [(ngModel)]='text' />
                     <span *ngIf='!show' (click)='makeEditable()'>{{text || '-Empty Field-'}}</span>
                     <i id='ndv-ic' *ngIf='!show' class='fa fa-pencil'></i>
