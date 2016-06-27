@@ -1,6 +1,6 @@
 {
   "name": "angular2-click-to-edit",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "wrap your data-binding to make it editable.",
   "main": "angular2-click-to-edit-example.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nadavshemesh/angular2-click-to-edit/"
+    "url": "git+https://github.com/nadavshemesh/angular2-click-to-edit.git"
   },
   "keywords": [
     "Angular",
