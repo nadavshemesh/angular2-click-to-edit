@@ -1,6 +1,6 @@
 {
   "name": "angular2-click-to-edit",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "wrap your data-binding to make it editable.",
   "main": "angular2-click-to-edit-example.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jhades/angular2-library-seed.git"
+    "url": "https://github.com/nadavshemesh/angular2-click-to-edit/"
   },
   "keywords": [
     "Angular",
@@ -26,8 +26,22 @@
   "devDependencies": {
     "typescript": "^1.8.10"
   },
-  "dependencies": {
-    "@angular": "2.0.0-rc.1",
-    "rxjs": "5.0.0-beta.6"
+  "dependencies": {},
+  "peerDependencies": {
+    "@angular/common": "2.0.0-rc.1",
+    "@angular/compiler": "2.0.0-rc.1",
+    "@angular/core": "2.0.0-rc.1",
+    "@angular/http": "2.0.0-rc.1",
+    "@angular/platform-browser": "2.0.0-rc.1",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.1",
+    "@angular/router": "2.0.0-rc.1",
+    "@angular/router-deprecated": "2.0.0-rc.1",
+    "@angular/upgrade": "2.0.0-rc.1",
+    "angular2-in-memory-web-api": "0.0.11",
+    "core-js": "^2.4.0",
+    "reflect-metadata": "^0.1.3",
+    "rxjs": "5.0.0-beta.6",
+    "systemjs": "0.19.27",
+    "zone.js": "^0.6.12"
   }
 }
