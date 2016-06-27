@@ -1,6 +1,6 @@
 {
   "name": "angular2-click-to-edit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "wrap your data-binding to make it editable.",
   "main": "angular2-click-to-edit-example.js",
   "scripts": {
