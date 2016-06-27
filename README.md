@@ -2,6 +2,9 @@
 # Angular 2 Click-To-Edit
 ##Click on a data-binding to make it an input field, and save the changes!
 
+## Examples:
+ -Plunker Example - http://plnkr.co/edit/4dGYAe?p=info 
+
 ## This Version Has:
 
 - Easy to implement component to wrap your bindings.
@@ -77,3 +80,6 @@ page.html
 	**for instance: [title]="firstName"*
 	then $event = { firstName: 'the user edited text' }.
 ```
+
+## Thanks
+ - for this awesome tutorial by Ben Nadel - http://www.bennadel.com/blog/3009-tracking-click-events-outside-the-current-component-in-angular-2-beta-1.html 
