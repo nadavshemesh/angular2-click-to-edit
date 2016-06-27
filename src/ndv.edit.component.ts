@@ -3,20 +3,6 @@
 
 @Component({
     selector: 'ndv-edit',
-    template: `<span class='ndv-comp'>
-                    <input *ngIf='show' type='text' [(ngModel)]='text' />
-                    <span *ngIf='!show' (click)='makeEditable()'>{{text || '-Empty Field-'}}</span>
-                    <i id='ndv-ic' *ngIf='!show' class='fa fa-pencil'></i>
-                </span>
-                <div class='ndv-buttons' *ngIf='show'>
-                    <button class='btn-x-sm' (click)='callSave()'><i class='fa fa-check'></i></button>
-                    <button class='btn-x-sm' (click)='cancelEditable()'><i class='fa fa-remove'></i></button>
-                </div>`,
-    directives: [],
-    host: {
-        "(document: click)": "compareEvent($event)",
-        "(click)": "trackEvent($event)"
-    },
     styles: [`
        #ndv-ic {
         margin-right: 10px;
@@ -43,6 +29,19 @@
             z-index: 1;
         }
     `],
+    template: `<span class='ndv-comp'>
+                    <input *ngIf='show' type='text' [(ngModel)]='text' />
+                    <span *ngIf='!show' (click)='makeEditable()'>{{text || '-Empty Field-'}}</span>
+                    <i id='ndv-ic' *ngIf='!show' class='fa fa-pencil'></i>
+                </span>
+                <div class='ndv-buttons' *ngIf='show'>
+                    <button class='btn-x-sm' (click)='callSave()'><i class='fa fa-check'></i></button>
+                    <button class='btn-x-sm' (click)='cancelEditable()'><i class='fa fa-remove'></i></button>
+                </div>`,
+    host: {
+        "(document: click)": "compareEvent($event)",
+        "(click)": "trackEvent($event)"
+    },
     outputs: ['save : onSave']
 })
 
