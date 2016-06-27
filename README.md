@@ -1,15 +1,15 @@
 
-## Angular 2 Click-To-Edit
-#Click on a data-binding to make it an input field, and save the changes!
+# Angular 2 Click-To-Edit
+##Click on a data-binding to make it an input field, and save the changes!
 
-# This Version Has:
+## This Version Has:
 
 - Easy to implement component to wrap your bindings.
 - onSave event that calls your own save method.
 - Nice looking css style(inspired by Jira)
 - Canceling method when choosing to cancel or when clicking outside.
 
-# TODO:
+## TODO:
 
 - Easy permission enabling/disabling edit functionality.
 - Easy to attach Field-Validation. 
@@ -20,9 +20,22 @@
     npm install angular2-click-to-edit
 ```
 
-## How To Use:  
+# How To Use:  
 
-# Step 1:
+## Adding package to SystemJS:
+systemjs.config.js
+```
+ var map = {
+	'angular2-click-to-edit': 'node_modules/angular2-click-to-edit',
+	}
+```
+```
+ var packages = {
+	'angular2-click-to-edit': { main: 'index' }  
+ }
+```
+
+## Step 1:
 component.ts
 ```
  // Import the component to the component where you want to implement the click-to-edit.
@@ -35,7 +48,7 @@ component.ts
 
 ```
 
-# Step 2:
+## Step 2:
 page.html  
 ```
 <!- Wrap your binding like this: ->

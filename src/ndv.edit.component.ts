@@ -48,12 +48,12 @@
     `],
     template: `<span class='ndv-comp'>
                     <input *ngIf='show' type='text' [(ngModel)]='text' />
-                    <i id='ndv-ic' *ngIf='!show' class='fa fa-pencil'>✎</i>
+                    <i id='ndv-ic' *ngIf='!show'>✎</i>
                     <span *ngIf='!show' (click)='makeEditable()'>{{text || '-Empty Field-'}}</span>
                 </span>
                 <div class='ndv-buttons' *ngIf='show'>
-                    <button class='btn-x-sm' (click)='callSave()'><i class='fa fa-check'>✔</i></button>
-                    <button class='btn-x-sm' (click)='cancelEditable()'><i class='fa fa-remove'>✖</i></button>
+                    <button class='btn-x-sm' (click)='callSave()'><i>✔</i></button>
+                    <button class='btn-x-sm' (click)='cancelEditable()'><i>✖</i></button>
                 </div>`,
     host: {
         "(document: click)": "compareEvent($event)",
