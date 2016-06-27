@@ -61,22 +61,20 @@ page.html
 <p><ndv-edit title=["'firstName'"] [placeholder]='user.firstName' (onSave)='yourSaveMethod($event)'></ndv-edit></p>
 ```
 # Important Notes!
-
-```
  As you can see there are few parameters passed:
-	*[title] - this is the name of the field you want to send back to the server. i.e: "email".
+- [title] - this is the name of the field you want to send back to the server. i.e: "email".
 
-	*[placeholder] - this is the text that will be displayed by default(before editing)
-					 so we would probably like to bind our data to it.
+- [placeholder] - this is the text that will be displayed by default(before editing)
+		  so we would probably like to bind our data to it.
 
-	*(onSave) - this one takes the function you give it and 
-				call it when the user saved his edited info!
+- (onSave) - this one takes the function you give it and 
+	     call it when the user saved his edited info!
 
-#### VERY IMPORTANT TO NOTICE ####
-	$event - is the object containing the information based on the [title]!!! 
-	**for instance: [title]="firstName"*
-	then $event = { firstName: 'the user edited text' }.
-```
+# VERY IMPORTANT TO NOTICE 
+$event - is the object containing the information based on the [title]!!! 
+- for instance: [title]="firstName"*
+  then $event = { firstName: 'the user edited text' }.
+
 
 ## Thanks
  - for this awesome tutorial by Ben Nadel - http://www.bennadel.com/blog/3009-tracking-click-events-outside-the-current-component-in-angular-2-beta-1.html 
