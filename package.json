@@ -1,0 +1,33 @@
+{
+  "name": "angular2-click-to-edit",
+  "version": "1.0.0",
+  "description": "wrap your data-binding to make it editable.",
+  "main": "angular2-click-to-edit-example.js",
+  "scripts": {
+    "watch": "tsc -p src -w",
+    "build": "rm -rf lib && tsc -p src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhades/angular2-library-seed.git"
+  },
+  "keywords": [
+    "Angular",
+    "2",
+    "click",
+    "edit"
+  ],
+  "author": "nadavshemesh2@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nadavshemesh/angular2-click-to-edit/issues"
+  },
+  "homepage": "https://github.com/nadavshemesh/angular2-click-to-edit#readme",
+  "devDependencies": {
+    "typescript": "^1.8.10"
+  },
+  "dependencies": {
+    "@angular": "2.0.0-rc.1",
+    "rxjs": "5.0.0-beta.6"
+  }
+}
