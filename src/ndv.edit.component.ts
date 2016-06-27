@@ -7,15 +7,15 @@
        #ndv-ic {
         margin-right: 10px;
         color: #d9d9d9;
-        },
+        }
         .ndv-comp {
             padding:6px;
             border-radius: 3px;
-        },
+        }
         .active-ndv {
             background-color: #f0f0f0;
             border: 1px solid #d9d9d9;
-        },
+        }
         .ndv-buttons {
             background-color: #f0f0f0;
             border: 1px solid #ccc;
