@@ -58,7 +58,7 @@ page.html
 <p>{{user.firstName}}</p>
 
 <!- This is your EDITABLE binding: ->
-<p><ndv-edit title=["'firstName'"] [placeholder]='user.firstName' (onSave)='yourSaveMethod($event)'></ndv-edit></p>
+<p><ndv-edit [title]="'firstName'" [placeholder]='user.firstName' (onSave)='yourSaveMethod($event)'></ndv-edit></p>
 ```
 # Important Notes!
  As you can see there are few parameters passed:
