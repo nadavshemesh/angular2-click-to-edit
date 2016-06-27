@@ -3,6 +3,7 @@
 
 @Component({
     selector: 'ndv-edit',
+    styleUrls:['fontawesome/font-awesome.css'],
     styles: [`
        #ndv-ic {
         margin-right: 10px;
@@ -28,6 +29,17 @@
             right: 10;
             z-index: 1;
         }
+        .ndv-comp:hover {
+            border: 1px solid grey;
+        }
+        .ndv-comp:hover > ndv-ic {
+            display:block;
+        }
+
+        .ndv-save {
+            margin-right:3px;
+        }
+
     `],
     template: `<span class='ndv-comp'>
                     <input *ngIf='show' type='text' [(ngModel)]='text' />
