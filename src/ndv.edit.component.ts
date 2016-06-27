@@ -46,7 +46,7 @@
     outputs: ['save : onSave']
 })
 
-export class ndvEditComponent {
+export class NdvEditComponent {
     @Input('placeholder') text;
     @Input('title') fieldName;
     originalText;

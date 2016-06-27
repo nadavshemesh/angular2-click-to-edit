@@ -38,13 +38,13 @@ component.ts
 # Step 2:
 page.html  
 ```
-  <!- Wrap your binding like this: ->
+<!- Wrap your binding like this: ->
 
-	  <!- This is your uneditible regular binding: ->
-	  <p>{{user.firstName}}</p>
+<!- This is your uneditible regular binding: ->
+<p>{{user.firstName}}</p>
 
-	  <!- This is your EDITABLE binding: ->
-	  <p><ndv-edit title=["'firstName'"] [placeholder]='user.firstName' (onSave)='yourSaveMethod($event)'></ndv-edit></p>
+<!- This is your EDITABLE binding: ->
+<p><ndv-edit title=["'firstName'"] [placeholder]='user.firstName' (onSave)='yourSaveMethod($event)'></ndv-edit></p>
 
 ```
 # Important Notes!
