@@ -3,7 +3,6 @@
 
 @Component({
     selector: 'ndv-edit',
-    styleUrls:['node_modules/angular2-click-to-edit/fontawesome/font-awesome.css'],
     styles: [`
        #ndv-ic {
         margin-right: 10px;
