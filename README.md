@@ -3,7 +3,7 @@
 ##Click on a data-binding to make it an input field, and save the changes!
 
 ## Examples:
- -Plunker Example - http://plnkr.co/edit/4dGYAe?p=info 
+- Plunker Example - http://plnkr.co/edit/4dGYAe?p=info 
 
 ## This Version Has:
 
@@ -41,7 +41,7 @@ systemjs.config.js
 ## Step 1:
 component.ts
 ```
- // Import the component to the component where you want to implement the click-to-edit.
+ // Import to the component where you want to implement the click-to-edit.
  import { NDV_DIRECTIVES } from 'angular2-click-to-edit/components';
 
  // Include it in the Component directives
@@ -54,14 +54,11 @@ component.ts
 ## Step 2:
 page.html  
 ```
-<!- Wrap your binding like this: ->
-
 <!- This is your uneditible regular binding: ->
 <p>{{user.firstName}}</p>
 
 <!- This is your EDITABLE binding: ->
 <p><ndv-edit title=["'firstName'"] [placeholder]='user.firstName' (onSave)='yourSaveMethod($event)'></ndv-edit></p>
-
 ```
 # Important Notes!
 
@@ -70,7 +67,7 @@ page.html
 	*[title] - this is the name of the field you want to send back to the server. i.e: "email".
 
 	*[placeholder] - this is the text that will be displayed by default(before editing)
-					 so we would probably like to bind out data to it.
+					 so we would probably like to bind our data to it.
 
 	*(onSave) - this one takes the function you give it and 
 				call it when the user saved his edited info!
