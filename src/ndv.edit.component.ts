@@ -5,7 +5,7 @@
     selector: 'ndv-edit',
     styles: [`
        #ndv-ic {
-        margin-right: 10px;
+        margin-left: 10px;
         color: #d9d9d9;
         }
         .ndv-comp {
@@ -16,6 +16,12 @@
             background-color: #f0f0f0;
             border: 1px solid #d9d9d9;
         }
+        input {
+            border-radius: 5px;
+            box-shadow: none;
+            border: 1px solid #dedede;
+            min-width: 5px;
+        }
         .ndv-buttons {
             background-color: #f0f0f0;
             border: 1px solid #ccc;
@@ -25,7 +31,7 @@
             outline: none;
             padding: 3px;
             position: absolute;
-            right: 10;
+            margin-left: 6px;
             z-index: 1;
         }
         .ndv-comp:hover {
@@ -42,12 +48,12 @@
     `],
     template: `<span class='ndv-comp'>
                     <input *ngIf='show' type='text' [(ngModel)]='text' />
+                    <i id='ndv-ic' *ngIf='!show' class='fa fa-pencil'>✎</i>
                     <span *ngIf='!show' (click)='makeEditable()'>{{text || '-Empty Field-'}}</span>
-                    <i id='ndv-ic' *ngIf='!show' class='fa fa-pencil'></i>
                 </span>
                 <div class='ndv-buttons' *ngIf='show'>
-                    <button class='btn-x-sm' (click)='callSave()'><i class='fa fa-check'></i></button>
-                    <button class='btn-x-sm' (click)='cancelEditable()'><i class='fa fa-remove'></i></button>
+                    <button class='btn-x-sm' (click)='callSave()'><i class='fa fa-check'>✔</i></button>
+                    <button class='btn-x-sm' (click)='cancelEditable()'><i class='fa fa-remove'>✖</i></button>
                 </div>`,
     host: {
         "(document: click)": "compareEvent($event)",
