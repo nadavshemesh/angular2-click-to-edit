@@ -1,11 +1,12 @@
 {
   "name": "angular2-click-to-edit",
-  "version": "1.0.12",
+  "version": "1.0.35",
   "description": "wrap your data-binding to make it editable.",
   "main": "angular2-click-to-edit-example.js",
   "scripts": {
     "watch": "tsc -p src -w",
-    "build": "rm -rf lib && tsc -p src"
+    "build": "rm -rf lib && tsc -p src",
+    "prepublish": "tsc"
   },
   "repository": {
     "type": "git",
