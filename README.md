@@ -2,6 +2,7 @@
 # Angular 2 Click-To-Edit
 ##Click on a data-binding to make it an input field, and save the changes!
 
+![Example](preview.jpg)
 ## Examples:
 - Plunker Example - http://plnkr.co/edit/4dGYAe?p=info 
 
