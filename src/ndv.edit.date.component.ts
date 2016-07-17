@@ -2,13 +2,12 @@
 
 
 @Component({
-    selector: 'ndv-edit',
+    selector: 'ndv-date',
     styles: [`
        #ndv-ic {
         margin-left: 10px;
         color: #d9d9d9;
         }
-
         .ndv-comp {
             padding:6px;
             border-radius: 3px;
@@ -51,9 +50,9 @@
         }
     `],
     template: `<span class='ndv-comp' [ngClass]="{'ndv-active':show}">
-                    <input *ngIf='show' type='text' [(ngModel)]='text' />
+                    <input *ngIf='show' type='date' [(ngModel)]='ddate' />
                     <i id='ndv-ic' *ngIf='!show'>✎</i>
-                    <span *ngIf='!show' (click)='makeEditable()'>{{text || '-Empty Field-'}}</span>
+                    <span *ngIf='!show' (click)='makeEditable()'>{{ddate || '-Empty Field-'}}</span>
                 </span>
                 <div class='ndv-buttons' *ngIf='show'>
                     <button class='btn-x-sm' (click)='callSave()'><i>✔</i></button>
@@ -66,10 +65,11 @@
     outputs: ['save : onSave']
 })
 
-export class NdvEditComponent {
-    @Input('placeholder') text;
+export class NdvEditDateComponent {
+    @Input('placeholder') holder;
     @Input('title') fieldName;
-    originalText;
+    ddate
+    originalddate;
     tracker;
     el: ElementRef;
     show = false;
@@ -80,7 +80,12 @@ export class NdvEditComponent {
     }
     
     ngOnInit() {
-        this.originalText = this.text;    //Saves a copy of the original field info.
+        this.holder = new Date(this.holder);
+        var dy = ("0" + this.holder.getDate()).slice(-2);
+        var month = ("0" + this.holder.getMonth() + 1).slice(-2);
+        var year = this.holder.getFullYear();
+        this.ddate = '' + year + '-' + month + '-' + dy;
+        this.originalddate = this.ddate;    //Saves a copy of the original field info.
     }
 
     makeEditable() {
@@ -101,14 +106,14 @@ export class NdvEditComponent {
 
     cancelEditable() {
         this.show = false;
-        this.text = this.originalText;
+        this.ddate = this.originalddate;
     }
 
     callSave() {
         var data = {};  //BUILD OBJ FOR EXPORT.
-        data["" + this.fieldName] = this.text;
-        var oldText = this.text;
-        setTimeout(() => { this.originalText = oldText; this.text = oldText }, 0);  //Sets the field with the new text;
+        data["" + this.fieldName] = this.ddate;
+        var oldddate = this.ddate;
+        setTimeout(() => { this.originalddate = oldddate; this.ddate = oldddate }, 0);  //Sets the field with the new ddate;
         this.save.emit(data);
         this.show = false;
         

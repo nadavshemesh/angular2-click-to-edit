@@ -2,13 +2,12 @@
 
 
 @Component({
-    selector: 'ndv-edit',
+    selector: 'ndv-drop',
     styles: [`
        #ndv-ic {
         margin-left: 10px;
         color: #d9d9d9;
         }
-
         .ndv-comp {
             padding:6px;
             border-radius: 3px;
@@ -45,15 +44,14 @@
         .ndv-save {
             margin-right:3px;
         }
-        .ndv-active {
-            background-color: #f0f0f0;
-            border: 1px solid #d9d9d9;
-        }
+
     `],
-    template: `<span class='ndv-comp' [ngClass]="{'ndv-active':show}">
-                    <input *ngIf='show' type='text' [(ngModel)]='text' />
+    template: `<span class='ndv-comp'>
+                    <select *ngIf='show' [(ngModel)]='selectedItem'>
+                        <option *ngFor='let option of options'>{{option.name}}</option>
+                    </select>
                     <i id='ndv-ic' *ngIf='!show'>✎</i>
-                    <span *ngIf='!show' (click)='makeEditable()'>{{text || '-Empty Field-'}}</span>
+                    <span *ngIf='!show' (click)='makeEditable()'>{{option || '-Empty Field-'}}</span>
                 </span>
                 <div class='ndv-buttons' *ngIf='show'>
                     <button class='btn-x-sm' (click)='callSave()'><i>✔</i></button>
@@ -66,10 +64,12 @@
     outputs: ['save : onSave']
 })
 
-export class NdvEditComponent {
-    @Input('placeholder') text;
+export class NdvEditDropComponent {
+    @Input() options;
+    @Input('selected') selectedOption = {};
     @Input('title') fieldName;
-    originalText;
+    selectedItem;
+    originalOption;
     tracker;
     el: ElementRef;
     show = false;
@@ -80,7 +80,7 @@ export class NdvEditComponent {
     }
     
     ngOnInit() {
-        this.originalText = this.text;    //Saves a copy of the original field info.
+        this.originalOption = this.selectedOption;    //Saves a copy of the original field info.
     }
 
     makeEditable() {
@@ -101,14 +101,14 @@ export class NdvEditComponent {
 
     cancelEditable() {
         this.show = false;
-        this.text = this.originalText;
+        this.selectedOption = this.originalOption;
     }
 
     callSave() {
         var data = {};  //BUILD OBJ FOR EXPORT.
-        data["" + this.fieldName] = this.text;
-        var oldText = this.text;
-        setTimeout(() => { this.originalText = oldText; this.text = oldText }, 0);  //Sets the field with the new text;
+        data["" + this.fieldName] = this.selectedOption;
+        var oldoption = this.selectedOption;
+        setTimeout(() => { this.originalOption = oldoption; this.selectedOption = oldoption }, 0);  //Sets the field with the new option;
         this.save.emit(data);
         this.show = false;
         

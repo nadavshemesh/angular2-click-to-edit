@@ -8,7 +8,6 @@
         margin-left: 10px;
         color: #d9d9d9;
         }
-
         .ndv-comp {
             padding:6px;
             border-radius: 3px;
@@ -45,12 +44,9 @@
         .ndv-save {
             margin-right:3px;
         }
-        .ndv-active {
-            background-color: #f0f0f0;
-            border: 1px solid #d9d9d9;
-        }
+
     `],
-    template: `<span class='ndv-comp' [ngClass]="{'ndv-active':show}">
+    template: `<span class='ndv-comp'>
                     <input *ngIf='show' type='text' [(ngModel)]='text' />
                     <i id='ndv-ic' *ngIf='!show'>✎</i>
                     <span *ngIf='!show' (click)='makeEditable()'>{{text || '-Empty Field-'}}</span>

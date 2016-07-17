@@ -2,7 +2,7 @@
 
 
 @Component({
-    selector: 'ndv-edit',
+    selector: 'ndv-area',
     styles: [`
        #ndv-ic {
         margin-left: 10px;
@@ -50,15 +50,15 @@
             border: 1px solid #d9d9d9;
         }
     `],
-    template: `<span class='ndv-comp' [ngClass]="{'ndv-active':show}">
-                    <input *ngIf='show' type='text' [(ngModel)]='text' />
+    template: `<form class='ndv-comp' [ngClass]="{'ndv-active':show}"><span>
+                    <textarea rows="6" cols="55" *ngIf='show' [(ngModel)]='text'></textarea>
                     <i id='ndv-ic' *ngIf='!show'>✎</i>
-                    <span *ngIf='!show' (click)='makeEditable()'>{{text || '-Empty Field-'}}</span>
+                    <span *ngIf='!show' style='line-height:1.5em;word-wrap: break-word;' (click)='makeEditable()'>{{text || '-Empty Field-'}}</span>
                 </span>
                 <div class='ndv-buttons' *ngIf='show'>
                     <button class='btn-x-sm' (click)='callSave()'><i>✔</i></button>
                     <button class='btn-x-sm' (click)='cancelEditable()'><i>✖</i></button>
-                </div>`,
+                </div></form>`,
     host: {
         "(document: click)": "compareEvent($event)",
         "(click)": "trackEvent($event)"
@@ -66,7 +66,7 @@
     outputs: ['save : onSave']
 })
 
-export class NdvEditComponent {
+export class NdvEditAreaComponent {
     @Input('placeholder') text;
     @Input('title') fieldName;
     originalText;
