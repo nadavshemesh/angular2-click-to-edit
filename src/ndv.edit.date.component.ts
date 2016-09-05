@@ -49,7 +49,7 @@
             border: 1px solid #d9d9d9;
         }
     `],
-    template: `<span class='ndv-comp' [ngClass]="{'ndv-active':show}">
+    template: `<span *ngIf="!permission">{{ddate}}</span><span *ngIf="permission" class='ndv-comp' [ngClass]="{'ndv-active':show}">
                     <input *ngIf='show' type='date' [(ngModel)]='ddate' />
                     <i id='ndv-ic' *ngIf='!show'>✎</i>
                     <span *ngIf='!show' (click)='makeEditable()'>{{ddate || '-Empty Field-'}}</span>
@@ -68,6 +68,7 @@
 export class NdvEditDateComponent {
     @Input('placeholder') holder;
     @Input('title') fieldName;
+    @Input() permission = true;
     ddate
     originalddate;
     tracker;

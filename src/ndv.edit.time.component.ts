@@ -50,7 +50,7 @@
             border: 1px solid #d9d9d9;
         }
     `],
-    template: `<span class='ndv-comp' [ngClass]="{'ndv-active':show}">
+    template: `<span *ngIf="!permission">{{time}}</span><span *ngIf="permission" class='ndv-comp' [ngClass]="{'ndv-active':show}">
                     <input *ngIf='show' type='time' [(ngModel)]='time' />
                     <i id='ndv-ic' *ngIf='!show'>✎</i>
                     <span *ngIf='!show' (click)='makeEditable()'>{{time || '-Empty Field-'}}</span>
@@ -69,6 +69,7 @@
 export class NdvEditTimeComponent {
     @Input('placeholder') time;
     @Input('title') fieldName;
+    @Input() permission = true;
     originalTime;
     tracker;
     el: ElementRef;

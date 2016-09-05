@@ -50,7 +50,7 @@
             border: 1px solid #d9d9d9;
         }
     `],
-    template: `<form class='ndv-comp' [ngClass]="{'ndv-active':show}"><span>
+    template: `<span *ngIf="!permission">{{text}}</span><form *ngIf="permission" class='ndv-comp' [ngClass]="{'ndv-active':show}"><span>
                     <textarea rows="6" cols="55" *ngIf='show' [(ngModel)]='text'></textarea>
                     <i id='ndv-ic' *ngIf='!show'>✎</i>
                     <span *ngIf='!show' style='line-height:1.5em;word-wrap: break-word;' (click)='makeEditable()'>{{text || '-Empty Field-'}}</span>
@@ -69,6 +69,7 @@
 export class NdvEditAreaComponent {
     @Input('placeholder') text;
     @Input('title') fieldName;
+    @Input() permission = true;
     originalText;
     tracker;
     el: ElementRef;

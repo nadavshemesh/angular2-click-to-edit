@@ -49,7 +49,7 @@
         }
 
     `],
-    template: `<span class='ndv-comp' [ngClass]="{'ndv-active':show}">
+    template: `<span *ngIf="!permission">{{option}}</span><span *ngIf="permission" class='ndv-comp' [ngClass]="{'ndv-active':show}">
                     <select *ngIf='show' [(ngModel)]='selectedOption'>
                         <option *ngFor='let option of options' value='{{option}}'>{{option}}</option>
                     </select>
@@ -71,6 +71,7 @@ export class NdvEditSelectComponent {
     @Input('items') options;
     @Input('placeholder') selectedOption;
     @Input('title') fieldName;
+    @Input() permission = true;
     selectedItem;
     originalOption;
     tracker;

@@ -6,18 +6,17 @@
 ## Examples:
 - Plunker Example - http://plnkr.co/edit/4dGYAe?p=info 
 
+## Newly Added!
+
+- Easy permission enabling/disabling edit functionality. 
+- Easy to attach Field-Validation. 
+
 ## This Version Has:
 
 - Easy to implement component to wrap your bindings.
 - onSave event that calls your own save method.
 - Nice looking css style(inspired by Jira)
 - Canceling method when choosing to cancel or when clicking outside.
-
-## TODO:
-
-- Easy permission enabling/disabling edit functionality.
-- Easy to attach Field-Validation. 
-
 
 ## Installation
 ```
@@ -67,6 +66,14 @@ page.html
 
 - [placeholder] - this is the text that will be displayed by default(before editing)
 		  so we would probably like to bind our data to it.
+
+- [min] - this one is similar to minlength(for validation) and can set the minimum requirement of chars.
+
+- [max] - this one is similar to maxlength(for validation) and can limit the number of chars.
+
+-[regex] - this one is similar to pattern(for validation) and can use regular expressions.
+
+- [permission] - a simple attribute, once equal to false the edit field is changed to read-only. 
 
 - (onSave) - this one takes the function you give it and 
 	     call it when the user saved his edited info!
