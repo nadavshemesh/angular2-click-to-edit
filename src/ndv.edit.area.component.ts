@@ -1,4 +1,4 @@
-﻿import { Component, Input, EventEmitter, ElementRef } from '@angular/core';
+import { Component, Input, EventEmitter, ElementRef } from '@angular/core';
 
 
 @Component({
@@ -8,7 +8,6 @@
         margin-left: 10px;
         color: #d9d9d9;
         }
-
         .ndv-comp {
             padding:6px;
             border-radius: 3px;
@@ -41,7 +40,6 @@
         .ndv-comp:hover > ndv-ic {
             display:block;
         }
-
         .ndv-save {
             margin-right:3px;
         }
@@ -50,8 +48,8 @@
             border: 1px solid #d9d9d9;
         }
     `],
-    template: `<span *ngIf="!permission">{{text}}</span><form *ngIf="permission" class='ndv-comp' [ngClass]="{'ndv-active':show}"><span>
-                    <textarea rows="6" cols="55" *ngIf='show' [(ngModel)]='text'></textarea>
+    template: `<span *ngIf="!permission">{{text}}</span><form *ngIf="permission" class='ndv-comp' [ngClass]="{'ndv-active':show}" name='areaForm'><span>
+                    <textarea name='area' rows="6" cols="55" *ngIf='show' [(ngModel)]='text'></textarea>
                     <i id='ndv-ic' *ngIf='!show'>✎</i>
                     <span *ngIf='!show' style='line-height:1.5em;word-wrap: break-word;' (click)='makeEditable()'>{{text || '-Empty Field-'}}</span>
                 </span>
