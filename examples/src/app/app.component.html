@@ -1,0 +1,23 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{title}}!
+  </h1>
+  <div class="container">
+    <div class="header clearfix">
+      <h3 class="text-muted">Angular2-Click-to-Edit Example</h3>
+    </div>
+    <div class="jumbotron" style='background:white;'>
+      <h3>Click on a binding to edit it! </h3>
+      <h4>First Name</h4><p><ndv-edit [title]="'firstName'" [placeholder]="firstName" (onSave)="saveMethod($event)"></ndv-edit></p>
+      <h4>Last Name</h4><p><ndv-edit [title]="'lastName'" [placeholder]="lastName" (onSave)="saveMethod($event)"></ndv-edit></p>
+      <h4>Age</h4><p><ndv-edit [title]="'age'" [placeholder]="age" (onSave)="saveMethod($event)"></ndv-edit></p>
+    </div>
+  
+
+    <footer class="footer">
+      <p>angular2-click-to-edit</p>
+    </footer>
+
+  </div>
+

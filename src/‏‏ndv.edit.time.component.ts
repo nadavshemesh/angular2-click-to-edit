@@ -2,7 +2,7 @@
 
 
 @Component({
-    selector: 'ndv-time',
+    selector: 'ndv-edit',
     styles: [`
        #ndv-ic {
         margin-left: 10px;
