@@ -2,7 +2,7 @@
 
 
 @Component({
-    selector: 'ndv-time',
+    selector: 'ndv-select',
     styles: [`
        #ndv-ic {
         margin-left: 10px;
@@ -40,16 +40,21 @@
         .ndv-comp:hover > ndv-ic {
             display:block;
         }
-
+        .ndv-active {
+            background-color: #f0f0f0;
+            border: 1px solid #d9d9d9;
+        }
         .ndv-save {
             margin-right:3px;
         }
 
     `],
-    template: `<span class='ndv-comp'>
-                    <input *ngIf='show' type='time' [(ngModel)]='time' />
+    template: `<span *ngIf="!permission">{{option}}</span><span *ngIf="permission" class='ndv-comp' [ngClass]="{'ndv-active':show}">
+                    <select *ngIf='show' [(ngModel)]='selectedOption'>
+                        <option *ngFor='let option of options' value='{{option}}'>{{option}}</option>
+                    </select>
                     <i id='ndv-ic' *ngIf='!show'>✎</i>
-                    <span *ngIf='!show' (click)='makeEditable()'>{{time || '-Empty Field-'}}</span>
+                    <span *ngIf='!show' (click)='makeEditable()'>{{selectedOption || '-Empty Field-'}}</span>
                 </span>
                 <div class='ndv-buttons' *ngIf='show'>
                     <button class='btn-x-sm' (click)='callSave()'><i>✔</i></button>
@@ -62,10 +67,13 @@
     outputs: ['save : onSave']
 })
 
-export class NdvEditTimeComponent {
-    @Input('placeholder') time;
+export class NdvEditSelectComponent {
+    @Input('items') options;
+    @Input('placeholder') selectedOption;
     @Input('title') fieldName;
-    originalTime;
+    @Input() permission = true;
+    selectedItem;
+    originalOption;
     tracker;
     el: ElementRef;
     show = false;
@@ -74,9 +82,9 @@ export class NdvEditTimeComponent {
     constructor(el: ElementRef) {
         this.el = el;
     }
-    
+
     ngOnInit() {
-        this.originalTime = this.time;    //Saves a copy of the original field info.
+        this.originalOption = this.selectedOption;    //Saves a copy of the original field info.
     }
 
     makeEditable() {
@@ -97,16 +105,16 @@ export class NdvEditTimeComponent {
 
     cancelEditable() {
         this.show = false;
-        this.time = this.originalTime;
+        this.selectedOption = this.originalOption;
     }
 
     callSave() {
         var data = {};  //BUILD OBJ FOR EXPORT.
-        data["" + this.fieldName] = this.time;
-        var oldtime = this.time;
-        setTimeout(() => { this.originalTime = oldtime; this.time = oldtime }, 0);  //Sets the field with the new time;
+        data["" + this.fieldName] = this.selectedOption;
+        var oldoption = this.selectedOption;
+        setTimeout(() => { this.originalOption = oldoption; this.selectedOption = oldoption }, 0);  //Sets the field with the new option;
         this.save.emit(data);
         this.show = false;
-        
+
     }
 }
