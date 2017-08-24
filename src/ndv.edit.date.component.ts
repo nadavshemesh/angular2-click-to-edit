@@ -2,7 +2,7 @@
 
 
 @Component({
-    selector: 'ndv-date',
+    selector: 'ndv-edit',
     styles: [`
        #ndv-ic {
         margin-left: 10px;
@@ -44,12 +44,9 @@
         .ndv-save {
             margin-right:3px;
         }
-        .ndv-active {
-            background-color: #f0f0f0;
-            border: 1px solid #d9d9d9;
-        }
+
     `],
-    template: `<span *ngIf="!permission">{{ddate}}</span><span *ngIf="permission" class='ndv-comp' [ngClass]="{'ndv-active':show}">
+    template: `<span class='ndv-comp'>
                     <input *ngIf='show' type='date' [(ngModel)]='ddate' />
                     <i id='ndv-ic' *ngIf='!show'>✎</i>
                     <span *ngIf='!show' (click)='makeEditable()'>{{ddate || '-Empty Field-'}}</span>
@@ -66,10 +63,8 @@
 })
 
 export class NdvEditDateComponent {
-    @Input('placeholder') holder;
+    @Input('placeholder') ddate;
     @Input('title') fieldName;
-    @Input() permission = true;
-    ddate
     originalddate;
     tracker;
     el: ElementRef;
@@ -81,11 +76,6 @@ export class NdvEditDateComponent {
     }
     
     ngOnInit() {
-        this.holder = new Date(this.holder);
-        var dy = ("0" + this.holder.getDate()).slice(-2);
-        var month = ("0" + this.holder.getMonth() + 1).slice(-2);
-        var year = this.holder.getFullYear();
-        this.ddate = '' + year + '-' + month + '-' + dy;
         this.originalddate = this.ddate;    //Saves a copy of the original field info.
     }
 
