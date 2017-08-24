@@ -1,8 +1,8 @@
-﻿import { Component, Input, EventEmitter, ElementRef } from '@angular/core';
+import { Component, Input, EventEmitter, ElementRef } from '@angular/core';
 
 
 @Component({
-    selector: 'ndv-time',
+    selector: 'ndv-area',
     styles: [`
        #ndv-ic {
         margin-left: 10px;
@@ -40,21 +40,23 @@
         .ndv-comp:hover > ndv-ic {
             display:block;
         }
-
         .ndv-save {
             margin-right:3px;
         }
-
+        .ndv-active {
+            background-color: #f0f0f0;
+            border: 1px solid #d9d9d9;
+        }
     `],
-    template: `<span class='ndv-comp'>
-                    <input *ngIf='show' type='time' [(ngModel)]='time' />
+    template: `<span *ngIf="!permission">{{text}}</span><form *ngIf="permission" class='ndv-comp' [ngClass]="{'ndv-active':show}" name='areaForm'><span>
+                    <textarea name='area' rows="6" cols="55" *ngIf='show' [(ngModel)]='text'></textarea>
                     <i id='ndv-ic' *ngIf='!show'>✎</i>
-                    <span *ngIf='!show' (click)='makeEditable()'>{{time || '-Empty Field-'}}</span>
+                    <span *ngIf='!show' style='line-height:1.5em;word-wrap: break-word;' (click)='makeEditable()'>{{text || '-Empty Field-'}}</span>
                 </span>
                 <div class='ndv-buttons' *ngIf='show'>
                     <button class='btn-x-sm' (click)='callSave()'><i>✔</i></button>
                     <button class='btn-x-sm' (click)='cancelEditable()'><i>✖</i></button>
-                </div>`,
+                </div></form>`,
     host: {
         "(document: click)": "compareEvent($event)",
         "(click)": "trackEvent($event)"
@@ -62,10 +64,11 @@
     outputs: ['save : onSave']
 })
 
-export class NdvEditTimeComponent {
-    @Input('placeholder') time;
+export class NdvEditAreaComponent {
+    @Input('placeholder') text;
     @Input('title') fieldName;
-    originalTime;
+    @Input() permission = true;
+    originalText;
     tracker;
     el: ElementRef;
     show = false;
@@ -76,7 +79,7 @@ export class NdvEditTimeComponent {
     }
     
     ngOnInit() {
-        this.originalTime = this.time;    //Saves a copy of the original field info.
+        this.originalText = this.text;    //Saves a copy of the original field info.
     }
 
     makeEditable() {
@@ -97,14 +100,14 @@ export class NdvEditTimeComponent {
 
     cancelEditable() {
         this.show = false;
-        this.time = this.originalTime;
+        this.text = this.originalText;
     }
 
     callSave() {
         var data = {};  //BUILD OBJ FOR EXPORT.
-        data["" + this.fieldName] = this.time;
-        var oldtime = this.time;
-        setTimeout(() => { this.originalTime = oldtime; this.time = oldtime }, 0);  //Sets the field with the new time;
+        data["" + this.fieldName] = this.text;
+        var oldText = this.text;
+        setTimeout(() => { this.originalText = oldText; this.text = oldText }, 0);  //Sets the field with the new text;
         this.save.emit(data);
         this.show = false;
         

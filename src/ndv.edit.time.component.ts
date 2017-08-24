@@ -2,12 +2,13 @@
 
 
 @Component({
-    selector: 'ndv-edit',
+    selector: 'ndv-time',
     styles: [`
        #ndv-ic {
         margin-left: 10px;
         color: #d9d9d9;
         }
+
         .ndv-comp {
             padding:6px;
             border-radius: 3px;
@@ -44,9 +45,12 @@
         .ndv-save {
             margin-right:3px;
         }
-
+        .ndv-active {
+            background-color: #f0f0f0;
+            border: 1px solid #d9d9d9;
+        }
     `],
-    template: `<span class='ndv-comp'>
+    template: `<span *ngIf="!permission">{{time}}</span><span *ngIf="permission" class='ndv-comp' [ngClass]="{'ndv-active':show}">
                     <input *ngIf='show' type='time' [(ngModel)]='time' />
                     <i id='ndv-ic' *ngIf='!show'>✎</i>
                     <span *ngIf='!show' (click)='makeEditable()'>{{time || '-Empty Field-'}}</span>
@@ -65,6 +69,7 @@
 export class NdvEditTimeComponent {
     @Input('placeholder') time;
     @Input('title') fieldName;
+    @Input() permission = true;
     originalTime;
     tracker;
     el: ElementRef;
@@ -74,7 +79,7 @@ export class NdvEditTimeComponent {
     constructor(el: ElementRef) {
         this.el = el;
     }
-    
+
     ngOnInit() {
         this.originalTime = this.time;    //Saves a copy of the original field info.
     }
@@ -107,6 +112,6 @@ export class NdvEditTimeComponent {
         setTimeout(() => { this.originalTime = oldtime; this.time = oldtime }, 0);  //Sets the field with the new time;
         this.save.emit(data);
         this.show = false;
-        
+
     }
 }

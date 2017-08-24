@@ -2,7 +2,7 @@
 
 
 @Component({
-    selector: 'ndv-time',
+    selector: 'ndv-edit',
     styles: [`
        #ndv-ic {
         margin-left: 10px;
@@ -47,9 +47,11 @@
 
     `],
     template: `<span class='ndv-comp'>
-                    <input *ngIf='show' type='time' [(ngModel)]='time' />
+                    <select *ngIf='show' [(ngModel)]='selectedItem'>
+                        <option *ngFor='let option of options'>{{option.name}}</option>
+                    </select>
                     <i id='ndv-ic' *ngIf='!show'>✎</i>
-                    <span *ngIf='!show' (click)='makeEditable()'>{{time || '-Empty Field-'}}</span>
+                    <span *ngIf='!show' (click)='makeEditable()'>{{option || '-Empty Field-'}}</span>
                 </span>
                 <div class='ndv-buttons' *ngIf='show'>
                     <button class='btn-x-sm' (click)='callSave()'><i>✔</i></button>
@@ -62,10 +64,12 @@
     outputs: ['save : onSave']
 })
 
-export class NdvEditTimeComponent {
-    @Input('placeholder') time;
+export class NdvEditDropComponent {
+    @Input('options') items;
+    @Input('selected') selectedOption = {};
     @Input('title') fieldName;
-    originalTime;
+    selectedItem;
+    originalOption;
     tracker;
     el: ElementRef;
     show = false;
@@ -76,7 +80,7 @@ export class NdvEditTimeComponent {
     }
     
     ngOnInit() {
-        this.originalTime = this.time;    //Saves a copy of the original field info.
+        this.originalOption = this.selectedOption;    //Saves a copy of the original field info.
     }
 
     makeEditable() {
@@ -97,14 +101,14 @@ export class NdvEditTimeComponent {
 
     cancelEditable() {
         this.show = false;
-        this.time = this.originalTime;
+        this.option = this.originalOption;
     }
 
     callSave() {
         var data = {};  //BUILD OBJ FOR EXPORT.
-        data["" + this.fieldName] = this.time;
-        var oldtime = this.time;
-        setTimeout(() => { this.originalTime = oldtime; this.time = oldtime }, 0);  //Sets the field with the new time;
+        data["" + this.fieldName] = this.selectedOption;
+        var oldoption = this.selectedOption;
+        setTimeout(() => { this.originalOption = oldoption; this.selectedOption = oldoption }, 0);  //Sets the field with the new option;
         this.save.emit(data);
         this.show = false;
         

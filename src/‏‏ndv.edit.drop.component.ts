@@ -2,7 +2,7 @@
 
 
 @Component({
-    selector: 'ndv-edit',
+    selector: 'ndv-drop',
     styles: [`
        #ndv-ic {
         margin-left: 10px;
@@ -65,13 +65,12 @@
 })
 
 export class NdvEditDropComponent {
-    @Input('options') items;
+    @Input() options;
     @Input('selected') selectedOption = {};
     @Input('title') fieldName;
     selectedItem;
     originalOption;
     tracker;
-    option;
     el: ElementRef;
     show = false;
     save = new EventEmitter;
@@ -102,7 +101,7 @@ export class NdvEditDropComponent {
 
     cancelEditable() {
         this.show = false;
-        this.option = this.originalOption;
+        this.selectedOption = this.originalOption;
     }
 
     callSave() {
